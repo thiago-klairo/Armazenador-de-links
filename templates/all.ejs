@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links</title>
+</head>
+<div class="container">
+
+    <body class="bg-info">
+
+        <a class="btn - btn-success mb-3 mt-2 " href="/add"> Adicionar Link </a>
+        <% for(let i=0; i<links.length; i++) {%>
+
+            <div class="card p-2 mb-2 " id="<%=links[i]._id%>">
+                <form class='d-flex align-items-center justify-content-between' method="POST"
+                    action="/<%=links[i]._id%>?_method=DELETE">
+                    <div class="d-flex flex-column">
+                        <h2>
+                            <%=links[i].title %>
+                        </h2>
+                        <div>
+                            <%=links[i].description %>
+                        </div>
+                        <div class="text-muted">
+                            <%= links[i].url %>
+                        </div>
+                        <div class="text-info">
+                            Clicks: <%= links[i].click %>
+                        </div>
+
+                    </div>
+                    <div class="d-flex flex-column">
+                        <input name="id" value="<%=links[i]._id%>" hidden>
+                        <a href="/<%=links[i].title%>" class="mb-1 btn btn-success"> Acessar</a>
+                        <a class="btn btn-info mb-1" href="/edit/<%=links[i]._id%>">Editar</a>
+                        <button class="btn btn-danger" type="submit">Deletar</button>
+
+                    </div>
+                </form>
+            </div>
+
+            <%}%>
+
+
+</div>
+
+</body>
+
+</html>
