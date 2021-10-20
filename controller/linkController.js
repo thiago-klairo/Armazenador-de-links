@@ -47,7 +47,7 @@ const deleteLink = async (req, res) => {
     }
     try {
         await Link.findByIdAndDelete(id)
-        // res.send(id)
+      
         res.redirect("/")
     } catch (error) {
         res.status(404).send(error)
@@ -59,7 +59,7 @@ const loadLink = async (req, res) => {
     let id = req.params.id
     try {
         let doc = await Link.findById(id)
-        // res.send(id)
+      
         res.render("edit", { error: false, body: doc })
     } catch (error) {
         res.status(404).send(error)
